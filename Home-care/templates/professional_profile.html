@@ -1,0 +1,43 @@
+{%extends "professional_layout.html"%} <!--Inherited all nav features-->
+{%block content%}
+    {%if service%}
+        <div class="center"><h3>Edit Service</h3></div>
+        <form action="/profile/{{name}}/{{service.id}}" method="POST">
+            <div class="input_form">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Professional Name</label>
+                    <input type="text" class="form-control" name="name" id="name" value="{{service.fullname}}">
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" value="{{service.password}}">
+                </div>
+                <div class="mb-3">
+                    <label for="professional_id" class="form-label">Professional ID</label>
+                    <input type="text" class="form-control" name="professional_id" id="professional_id" value="{{service.id}}">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" name="address" id="address" value="{{service.address}}">
+                </div>
+                <div class="mb-3">
+                    <label for="phone_num" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" name="phone_num" id="phone_num" value="{{service.phone_num}}">
+                </div>
+                <div class="mb-3">
+                    <label for="experience" class="form-label">Experience</label>
+                    <input type="number" class="form-control" name="experience" id="experience" value="{{service.experience}}">
+                </div>
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rating : {{ra}}</label>
+                    <!-- <input type="text" class="form-control" name="description" id="description" value="{{service.experience}}"> -->
+                </div>
+                <div class="mb-3 d-flex justify-content-start gap-2">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="/home_pro/{{name}}/{{key}}" class="btn btn-danger">Close</a>
+                </div>
+
+            </div>
+        </form>
+    {%endif%}
+{%endblock%}

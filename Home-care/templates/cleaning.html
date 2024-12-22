@@ -1,0 +1,170 @@
+{% extends "customer_layout.html" %} <!-- Inherits navigation features -->
+{% block content %}
+{% if clean %}
+<div class="d-flex justify-content-md-center my-4">
+    <div class="table-container w-100">
+        <table class="table w-100 custom-table">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">ID</th>
+                    <th scope="col">Service Name</th>
+                    <th scope="col">Base Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in clean %}
+                <tr>
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.name }}</td>
+                    <td>{{ c.base_price }}</td>
+                    <td>{{ c.description }}</td>
+                    <td>
+                        <a href="/book/{{ name }}/{{ key }}/{{ c.id }}/{{par}}">
+                            <button type="button" class="btn btn-primary" aria-label="Book {{ c.name }}">Book</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% elif repair %}
+<div class="d-flex justify-content-md-center my-4">
+    <div class="table-container w-100">
+        <table class="table w-100 custom-table">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">ID</th>
+                    <th scope="col">Service name</th>
+                    <th scope="col">Base price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in repair %}
+                <tr>
+                    <td>{{ r.id }}</td>
+                    <td>{{ r.name }}</td>
+                    <td>{{ r.base_price }}</td>
+                    <td>{{ r.description }}</td>
+                    <td>
+                        <a href="/book/{{ name }}/{{ key }}/{{ r.id }}/{{par}}">
+                            <button type="button" class="btn btn-primary" aria-label="Book {{ r.name }}">Book</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% elif electric %}
+<div class="d-flex justify-content-md-center my-4">
+    <div class="table-container w-100">
+        <table class="table w-100 custom-table">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">ID</th>
+                    <th scope="col">Service name</th>
+                    <th scope="col">Base price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in electric %}
+                <tr>
+                    <td>{{ e.id }}</td>
+                    <td>{{ e.name }}</td>
+                    <td>{{ e.base_price }}</td>
+                    <td>{{ e.description }}</td>
+                    <td>
+                        <a href="/book/{{ name }}/{{ key }}/{{ e.id }}/{{par}}">
+                            <button type="button" class="btn btn-primary" aria-label="Book {{ e.name }}">Book</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% elif others %}
+<div class="d-flex justify-content-md-center my-4">
+    <div class="table-container w-100">
+        <table class="table w-100 custom-table">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">ID</th>
+                    <th scope="col">Service name</th>
+                    <th scope="col">Base price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for o in others %}
+                <tr>
+                    <td>{{ o.id }}</td>
+                    <td>{{ o.name }}</td>
+                    <td>{{ o.base_price }}</td>
+                    <td>{{ o.description }}</td>
+                    <td>
+                        <a href="/book/{{ name }}/{{ key }}/{{ o.id }}/{{par}}">
+                        <button type="button" class="btn btn-primary" aria-label="Book {{ o.name }}">Book</button>
+                    </a>
+                </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% else %}
+<h3 class="text-center mt-3">No {{par}} available</h3>
+{% endif %}
+{% if history %}
+  <div class="d-flex justify-content-md-center my-4">
+    <div class="table-container w-100">
+      <table class="table w-100 custom-table">
+        <thead>
+          <tr class="table-success">
+            <th scope="col">professional phone Number</th>
+            <th scope="col">service id</th>
+            <th scope="col">customer id </th>
+            <th scope="col">professional id</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for value in history %}
+          <tr>
+            <td>{{ value["phone_num"]}}</td> <!-- Assuming ID is the first value -->
+            <td>{{ value["service_id"] }}</td> <!-- Assuming Customer Name -->
+            <td>{{ value["customer_id"] or "Not Assigned" }}</td> <!-- Assuming Professional Name -->
+            <td>{{ value["professional_id"] or "N/A" }}</td> <!-- Assuming Phone Number -->
+            {%if value["service_status"]=='accepted'%}
+            <td><a href="/close/{{ name }}/{{ key }}/{{value['service_request_id']}}">
+              <button type="button" class="btn btn-success" disabled>close it ?</button>
+          </a></td>
+            <td></td> <!-- Assuming Status -->
+            {%elif value["service_status"]=='requested'%}
+            <td>{{ value["service_status"] or "N/A" }}</td>
+            {%elif value["service_status"]=='closed'%}
+            <td>{{ value["service_status"] or "N/A" }}</td>
+            {%endif%}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}

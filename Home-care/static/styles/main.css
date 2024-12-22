@@ -1,0 +1,160 @@
+
+/* Custom Table Styles */
+.custom-table {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table th {
+    background-color: #343a40; /* Dark header */
+    color: #fff; /* White text */
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #f8f9fa; /* Light gray for hover effect */
+}
+
+.custom-table tbody tr td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Button Spacing and Styling */
+.btn-sm {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Responsive Table */
+.table-container {
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Link Styles */
+.text-primary {
+    font-weight: bold;
+    text-decoration: underline;
+}
+/* General Container Styling */
+.my_container {
+    margin: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar Styling */
+.my_panel nav.navbar {
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.my_panel .nav-link {
+    color: #007bff !important;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.my_panel .nav-link:hover {
+    text-decoration: underline;
+}
+
+.my_panel .navbar-toggler {
+    border-color: #007bff;
+}
+
+/* Welcome Text Styling */
+.text-left h3 {
+    margin-top: 20px;
+    color: #343a40;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+    font-size: 14px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Content Block */
+.container {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .my_container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .navbar-toggler {
+        margin-right: 10px;
+    }
+}
+p {
+    font-size: 1.1rem; /* Slightly larger than default for better readability */
+    line-height: 1.6;  /* Increased line height for clear spacing between lines */
+    color: #333333;    /* Dark gray text for better contrast */
+    margin-bottom: 15px; /* Space after each paragraph */
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+    text-align: justify; /* Align text evenly on both sides */
+    text-indent: 20px; /* Indent the first line for a classic look */
+}
+h1, h2, h3 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #333; /* Dark grey color */
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5rem; /* Large size for h1 */
+    text-align: center;
+    border-bottom: 2px solid #4CAF50; /* Green underline */
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 2rem; /* Slightly smaller than h1 */
+    color: #4CAF50; /* Green color */
+    text-align: left;
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 1.5rem; /* Smaller than h2 */
+    color: #555; /* Lighter grey color */
+    text-align: left;
+    margin-top: 20px;
+}

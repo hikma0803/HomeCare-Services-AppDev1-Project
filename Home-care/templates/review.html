@@ -1,0 +1,93 @@
+{% extends "customer_layout.html" %} <!-- Inherits navigation features -->
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<!-- Outer container with background color -->
+<form action="/close/{{name}}/{{key}}/{{id}}" method="POST">
+<div class="bg-light" style="min-height: 100vh;">
+    <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+        <!-- Sign-up form container -->
+        <div class="container-sm border p-4 bg-white shadow" style="max-width: 500px;">
+            <h3 class="text-center mb-4">Customer Sign-Up</h3>
+            <!-- <form action="/signup_customer" method="POST"> -->
+                <!-- Full Name Input -->
+                <div class="mb-3">
+                    <label for="service_id" class="form-label">service request ID: {{his.id}}</label>
+                    <!-- <input type="text" name="service_id" class="form-control" id="service_id" placeholder="Enter your full name" required> -->
+                </div>
+                <!-- phone_num Input -->
+                <div class="mb-3">
+                    <label for="phone_num" class="form-label">Professional phone number: {{his.phone_num}}</label>
+                    <!-- <input type="text" name="phone_num" class="form-control" id="phone_num" placeholder="Enter a phone_num" required> -->
+                </div>
+                
+                <!-- Professional ID Input -->
+                <div class="mb-3">
+                    <label for="professional_id" class="form-label">professional ID: {{professional_id}}</label>
+                    <!-- <input type="text" name="professional_id" class="form-control" id="professional_id" placeholder="Enter your Professional ID" required> -->
+                </div>
+                <!-- Star Rating Input -->
+                
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rate the Service</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5" required>
+                        <label for="star5" title="5 stars">&#9733;</label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4" title="4 stars">&#9733;</label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3" title="3 stars">&#9733;</label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2" title="2 stars">&#9733;</label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1" title="1 star">&#9733;</label>
+                    </div>
+                </div>
+                <!-- Date of Completion Input -->
+                <div class="mb-3">
+                    <label for="date_of_completion" class="form-label">Date of Completion : </label>
+                    <input type="date" name="date_of_completion" class="form-control" id="date_of_completion" required>
+                </div>
+                <!-- Description Input -->
+                <div class="mb-3">
+                    <label for="remarks" class="form-label">Remarks</label>
+                    <input type="text" name="remarks" class="form-control" id="remarks" placeholder="Enter a description" required>
+                </div>
+                <!-- Submit Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                </form>
+        </div>
+    </div>
+</div>
+
+<!-- Star Rating CSS -->
+<style>
+    .star-rating {
+        direction: rtl;
+        display: inline-flex;
+        font-size: 1.5rem;
+        justify-content: space-evenly;
+    }
+
+    .star-rating input {
+        display: none;
+    }
+
+    .star-rating label {
+        color: #ccc;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .star-rating input:checked ~ label {
+        color: gold;
+    }
+
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+        color: gold;
+    }
+</style>
+{% endblock %}

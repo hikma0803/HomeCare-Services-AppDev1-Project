@@ -1,0 +1,84 @@
+{% extends "customer_layout.html" %} <!-- Inherits navigation features -->
+{% block content %}
+
+<div class="container">
+  <div class="d-flex flex-wrap justify-content-between">
+    <!-- Card 1 -->
+    <div class="card" style="width: 18rem;">
+      <img src="/static/images/cleaning.jpg" class="card-img-top" alt="Cleaning">
+      <div class="card-body">
+        <h5 class="card-title">Cleaning</h5>
+        <p class="card-text">Professional cleaning services for your home and office.</p>
+        <a href="/login/clean/{{ name }}/{{key}}" class="btn btn-primary">Book Cleaning</a>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="card" style="width: 18rem;">
+      <img src="/static/images/repair.jpg" class="card-img-top" alt="Repair">
+      <div class="card-body">
+        <h5 class="card-title">Repair</h5>
+        <p class="card-text">Get your appliances and electronics fixed quickly.</p>
+        <a href="/login/repair/{{ name }}/{{key}}" class="btn btn-primary">Book Repair</a>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="card" style="width: 18rem;">
+      <img src="/static/images/electric.jpg" class="card-img-top" alt="Electric">
+      <div class="card-body">
+        <h5 class="card-title">Electric</h5>
+        <p class="card-text">Qualified electricians for all your wiring needs.</p>
+        <a href="/login/electrical/{{ name }}/{{key}}" class="btn btn-primary">Book Electric</a>
+      </div>
+    </div>
+    <!-- Card 4 -->
+    <div class="card" style="width: 18rem;">
+      <img src="/static/images/others.jpg" class="card-img-top" alt="Others">
+      <div class="card-body">
+        <h5 class="card-title">Others</h5>
+        <p class="card-text">Explore additional services tailored for you.</p>
+        <a href="/login/others/{{ name }}/{{key}}" class="btn btn-primary">Explore Others</a>
+      </div>
+    </div>
+  </div>
+</div>
+  {% if history %}
+  <div class="d-flex justify-content-md-center my-4">
+    <div class="table-container w-100">
+      <table class="table w-100 custom-table">
+        <thead>
+          <tr class="table-success">
+            <th scope="col">professional phone Number</th>
+            <th scope="col">service id</th>
+            <th scope="col">customer id </th>
+            <th scope="col">professional id</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for value in history %}
+          <tr>
+            <td>{{ value["phone_num"]}}</td> <!-- Assuming ID is the first value -->
+            <td>{{ value["service_id"] }}</td> <!-- Assuming Customer Name -->
+            <td>{{ value["customer_id"] or "Not Assigned" }}</td> <!-- Assuming Professional Name -->
+            <td>{{ value["professional_id"] or "N/A" }}</td> <!-- Assuming Phone Number -->
+            {%if value["service_status"]=='accepted'%}
+            <td><a href="/close/{{ name }}/{{ key }}/{{value['service_request_id']}}">
+              <button type="button" class="btn btn-success" disabled>close it ?</button>
+          </a></td>
+            <td></td> <!-- Assuming Status -->
+            {%elif value["service_status"]=='requested'%}
+            <td>{{ value["service_status"] or "N/A" }}</td>
+            {%elif value["service_status"]=='closed'%}
+            <td>{{ value["service_status"] or "N/A" }}</td>
+            {%endif%}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endif %}
+
+
+
+{% endblock %}

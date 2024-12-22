@@ -1,0 +1,193 @@
+{% extends "professional_layout.html" %}
+
+{% block content %}
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh; padding-top: 50px;">
+    <div class="col-9">
+        <!-- Search Form -->
+        <form action="/search_pro/{{ name }}/{{key}}" method="POST" class="p-4 border rounded shadow-sm bg-light">
+            <label for="action-select" class="form-label">Search by:</label>
+            <select id="action-select" name="selected_action" class="form-select mb-3">
+                <!-- <option value="service_request">Service Request</option> -->
+                <option value="date_of_request">Date of Request</option>
+                <option value="location">location</option>
+            </select>
+            <div class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_txt" id="search_txt">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </div>
+
+        </form>
+
+        <!-- Services Table -->
+        {% if services %}
+        <div class="d-flex justify-content-md-center my-4">
+            <div class="table-container w-100">
+                <table class="table w-100 custom-table">
+                    <thead>
+                        <tr class="table-success">
+                            <!-- <th scope="col">ID</th> -->
+                            <th scope="col">customer Name</th>
+                            <th scope="col">phone number</th>
+                            <th scope="col">location</th>
+                            <th scope="col">date</th>
+                            <!-- <th scope="col">action</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for service in services %}
+                        <tr>
+                            <td>{{ service.customer_name }}</td>
+                            <td>{{ service.customer_phone }}</td>
+                            <td>{{ service.customer_location }}</td>
+                            <td>{{ service.request_date }}</td>
+                            <!-- <td>{{ service.description }}</td>
+                            <td>
+                                <a href="/book_se/{{ name }}/{{ key }}/{{ service.id }}">
+                                    <button type="button" class="btn btn-primary" aria-label="Book {{ service.name }}">Book</button>
+                                </a>
+                            </td> -->
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+
+        <!-- Base Price Table -->
+        {% elif base_price %}
+        <div class="d-flex justify-content-md-center my-4">
+            <div class="table-container w-100">
+                <table class="table w-100 custom-table">
+                    <thead>
+                        <tr class="table-success">
+                            <th scope="col">ID</th>
+                            <th scope="col">Service Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for base in base_price %}
+                        <tr>
+                            <td>{{ base.id }}</td>
+                            <td>{{ base.name }}</td>
+                            <td>{{ base.base_price }}</td>
+                            <td>{{ base.time_required }}</td>
+                            <td>{{ base.description }}</td>
+                            <td>
+                                <a href="/book_se/{{ name }}/{{ key }}/{{ base.id }}">
+                                    <button type="button" class="btn btn-primary" aria-label="Book {{ base.name }}">Book</button>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+
+        <!-- Description Table -->
+        {% elif description %}
+        <div class="d-flex justify-content-md-center my-4">
+            <div class="table-container w-100">
+                <table class="table w-100 custom-table">
+                    <thead>
+                        <tr class="table-success">
+                            <th scope="col">ID</th>
+                            <th scope="col">Service Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for desc in description %}
+                        <tr>
+                            <td>{{ desc.id }}</td>
+                            <td>{{ desc.name }}</td>
+                            <td>{{ desc.base_price }}</td>
+                            <td>{{ desc.time_required }}</td>
+                            <td>{{ desc.description }}</td>
+                            <td>
+                                <a href="/book_se/{{ name }}/{{ key }}/{{ desc.id }}">
+                                    <button type="button" class="btn btn-primary" aria-label="Book {{ desc.name }}">Book</button>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+        <!-- {% elif service_date %}
+        <div class="d-flex justify-content-md-center my-4">
+            <div class="table-container w-100">
+                <table class="table w-100">
+                    <thead>
+                        <tr class="table-success">
+                            <th scope="col">Service ID</th>
+                            <th scope="col">Professional ID</th>
+                            <th scope="col">Customer ID</th>
+                            <th scope="col">Service status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in service_date %}
+                        <tr>
+                            <th scope="row">{{ d.id }}</th>
+                            <td>{{ d.service_id }}</td>
+                            <td>{{ d.professional_id }}</td>
+                            <td>{{ d.customer_id }}</td>
+                            <td>{{ d.service_status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        {% elif profile_verified %}
+        <div class="d-flex justify-content-md-center my-4">
+            <div class="table-container w-100">
+                <table class="table w-100">
+                    <thead>
+                        <tr class="table-success">
+                            <th scope="col">Fullname</th>
+                            <th scope="col">experience ID</th>
+                            <th scope="col">service type</th>
+                            <th scope="col">phone number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in profile_verified %}
+                        <tr>
+                            <th scope="row">{{ p.fullname }}</th>
+                            <td>{{ p.experience }}</td>
+                            <td>{{ p.service_type }}</td>
+                            <td>{{ p.phone_num }}</td>
+                           
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div> -->
+        
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

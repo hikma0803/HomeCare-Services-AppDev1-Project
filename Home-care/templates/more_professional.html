@@ -1,0 +1,22 @@
+{% extends "admin_layout.html" %} <!-- Inherit all nav features -->
+{% block content %}
+    {% if professional %}
+        <div class="d-flex justify-content-center align-items-start min-vh-100 pt-5">
+            <div class="card shadow-sm" style="max-width: 600px; width: 100%;">
+                <div class="card-body text-center">
+                    <h1 class="card-title mb-4">{{ professional.fullname }}</h1>
+                    <p class="card-text">
+                        <strong>Professional ID:</strong> {{ professional.id }}<br>
+                        <strong>address:</strong> {{ professional.address }}<br>
+                        <strong>Phone Number:</strong> {{ professional.phone_num }}<br>
+                        <strong>Approved Status:</strong> {{ professional.approved_status }}<br>
+                        <strong>Service Type:</strong> {{ professional.service_type }}<br>
+                        <strong>Experience:</strong> {{ professional.experience }}<br>
+                        <strong>Document:</strong><a href="/{{ professional.document_path }}" target="_blank">View Document</a>
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

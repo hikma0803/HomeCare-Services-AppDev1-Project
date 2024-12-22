@@ -1,0 +1,17 @@
+{% extends "professional_layout.html" %} <!-- Inherited all nav features -->
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 59rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Summary</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Service Type / Time Required</h6>
+                    <img src="{{ url_for('static', filename='images/' + key + '_customer_summary.jpeg') }}" width="200" height="200" alt="Service Type / Experience Summary">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
